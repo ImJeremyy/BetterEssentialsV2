@@ -1,0 +1,64 @@
+name: BetterEssentialsV2
+version: 1.0
+main: me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin
+api-version: 1.13
+author: MarkIsCool
+description: Better version of essentials (low key)
+commands:
+  clearinventory:
+    aliases: [ci, clear]
+    description: Clears inventory of yourself, or another
+    usage: /<command> [player]
+  give:
+    aliases: [item, i]
+    description: Gives you item
+    usage: /<command> [player] <item> <amount>
+  warp:
+    description: Warp to an area
+    usage: /<command> <warp_name>
+  setwarp:
+    description: Set your location as a new warp
+    usage: /<command> <warp_name>
+  deletewarp:
+    aliases: [delwarp]
+    description: Deletes a warp
+    usage: /<command> <warp_name>
+  warps:
+    description: View all the warps you can warp to
+    usage: /<command>
+  fly:
+    description: Gives you, or another user, fly.
+    usage: /<command> [player]
+  heal:
+    description: Heal you, or another player.
+    usage: /<command> [player]
+  feed:
+    description: Feed you, or another player.
+    usage: /<command> [player]
+  vanish:
+    description: Hides you, or another player, from another players
+    usage: /<command> [player]
+    aliases: [v]
+  speed:
+    description: Sets your, or another player's, walk & fly speed.
+    usage: /<command> [player] <1-10>
+  gamemode:
+    description: Set your gamemode
+    usage: /<command> <mode> [player]
+    aliases: [gm]
+  gamemodesurvival:
+    description: Survival game-mode shortcut
+    usage: /<command> [player]
+    aliases: [gms, gamemodes, gmsu, gamemodesurv]
+  gamemodecreative:
+    description: Creative game-mode shortcut
+    usage: /<command> [player]
+    aliases: [gmc, gamemodec]
+  gamemodeadventure:
+    description: Adventure game-mode shortcut
+    usage: /<command> [player]
+    aliases: [gma, gamemodea]
+  gamemodespectator:
+    description: Spectator game-mode shortcut
+    usage: /<command> [player]
+    aliases: [gmsp, gmspec, gamemodespec]
