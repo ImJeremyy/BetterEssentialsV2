@@ -34,7 +34,7 @@ public class GamemodeSurvivalCommand implements CommandExecutor {
                 }
                 if (targetPlayer != null) {
                     targetPlayer.setGameMode(GameMode.SURVIVAL);
-                    sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                    sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aSurvival"));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }

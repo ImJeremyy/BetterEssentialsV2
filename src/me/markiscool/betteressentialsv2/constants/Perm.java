@@ -34,6 +34,9 @@ public class Perm {
     public static Permission GIVE_SELF;
     public static Permission GIVE_OTHERS;
 
+    public static Permission SET_SPAWN;
+    public static Permission SPAWN;
+
     public static Permission SEEN;
 
     private final static String prefix = "betteressentialsv2.";
@@ -70,6 +73,9 @@ public class Perm {
         GIVE_OTHERS = new Permission(prefix + "give.others");
 
         SEEN = new Permission(prefix + "seen");
+
+        SET_SPAWN = new Permission(prefix + "spawn.set");
+        SPAWN = new Permission(prefix + "spawn");
 
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
         //TODO ADD APRENTS

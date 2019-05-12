@@ -42,6 +42,9 @@ commands:
   speed:
     description: Sets your, or another player's, walk & fly speed.
     usage: /<command> [player] <1-10>
+  seen:
+    description: Checks when the last time a player has been online.
+    usage: /<command> <player>
   gamemode:
     description: Set your gamemode
     usage: /<command> <mode> [player]
@@ -62,3 +65,9 @@ commands:
     description: Spectator game-mode shortcut
     usage: /<command> [player]
     aliases: [gmsp, gmspec, gamemodespec]
+  spawn:
+    description: Teleports you to spawn
+    usage: /<command> [player]
+  setspawn:
+    description: Sets your location as spawn
+    usage: /<command>

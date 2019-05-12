@@ -27,7 +27,7 @@ public class DeleteWarpCommand implements CommandExecutor {
                 final Warp warp = wm.getWarp(name);
                 if (warp != null) {
                     wm.remove(warp);
-                    sender.sendMessage(Util.wrapMessage(Lang.WARP_DELETE_SUCCESSFUL));
+                    sender.sendMessage(Util.wrapMessage("&6Deleted warp &a" + warp.getName()));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.WARP_NOT_FOUND));
                 }

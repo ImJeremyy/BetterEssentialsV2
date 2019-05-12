@@ -35,7 +35,7 @@ public class GamemodeCreativeCommand implements CommandExecutor {
                     }
                     if (targetPlayer != null) {
                         targetPlayer.setGameMode(GameMode.CREATIVE);
-                        sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aCreative"));
                     } else {
                         sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                     }

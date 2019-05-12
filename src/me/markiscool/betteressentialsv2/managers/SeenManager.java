@@ -53,9 +53,11 @@ public class SeenManager {
         config.createSection("seen");
         final ConfigurationSection sec = config.getConfigurationSection("seen");
         for(final Map.Entry<OfflinePlayer, Long> entry : players.entrySet()) {
-            sec.set(entry.getKey().getUniqueId().toString(), entry.getValue());
-            sec.set(entry.getKey().getUniqueId().toString() + ".username", entry.getKey().getName());
+            String uuidPath = entry.getKey().getUniqueId().toString();
+            sec.set(uuidPath, entry.getValue());
+            sec.set(uuidPath + ".username", entry.getKey().getName());
         }
+        save();
     }
 
     public void pull() {

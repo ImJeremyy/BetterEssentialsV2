@@ -11,6 +11,7 @@ public class Lang {
     public static String HEAL_SUCCESSFUL;
     public static String FEED_SUCCESSFUL;
     public static String SPEED_UPDATED;
+    public static String SPAWN_SET;
 
     public static String NOT_A_PLAYER;
     public static String NO_PERMISSION;
@@ -24,7 +25,7 @@ public class Lang {
 
     static {
         PREFIX = "&6[&bBetterEssentials&aV2&6]&r";
-        GAMEMODE_UPDATED = "&6Gamemode updated.";
+        GAMEMODE_UPDATED = "&6gamemode has been updated to";
         INVENTORY_CLEARED = "&6Inventory cleared.";
         FLIGHT_ENABLED = "&6Flight enabled.";
         FLIGHT_DISABLED = "&6Flight disabled";
@@ -32,6 +33,7 @@ public class Lang {
         HEAL_SUCCESSFUL = "&6Heal successfu.l";
         FEED_SUCCESSFUL = "&6Feed successful.";
         SPEED_UPDATED = "&6Speed updated.";
+        SPAWN_SET = "&aSpawn set.";
 
         NOT_A_PLAYER = "&cYou are not a player";
         NO_PERMISSION = "&cYou do not have permission to this command";

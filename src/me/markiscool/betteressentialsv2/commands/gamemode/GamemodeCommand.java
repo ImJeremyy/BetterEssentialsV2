@@ -37,16 +37,16 @@ public class GamemodeCommand implements CommandExecutor {
                 if(targetPlayer != null) {
                     if (mode.equals("c") || mode.equals("creative") || mode.equals("crea")) {
                         targetPlayer.setGameMode(GameMode.CREATIVE);
-                        sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aCreative"));
                     } else if (mode.equals("s") || mode.equals("survival") || mode.equals("surv")) {
                         targetPlayer.setGameMode(GameMode.SURVIVAL);
-                        sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aSurvival"));
                     } else if (mode.equals("a") || mode.equals("adventure") || mode.equals("adve")) {
                         targetPlayer.setGameMode(GameMode.ADVENTURE);
-                        sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aAdventure"));
                     } else if (mode.equals("sp") || mode.equals("spectator") || mode.equals("spec")) {
                         targetPlayer.setGameMode(GameMode.SPECTATOR);
-                        sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aSpectator"));
                     } else {
                         sender.sendMessage(Util.wrapMessage(Lang.INVALID_GAMEMODE));
                     }

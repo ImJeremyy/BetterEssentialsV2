@@ -25,7 +25,7 @@ public class FeedCommand implements CommandExecutor {
                     }
                 } else { //other
                     if (sender.hasPermission(Perm.FEED_OTHERS)) {
-                        targetPlayer = Bukkit.getPlayer(args[0]);
+                        targetPlayer = Util.getPlayer(args[0]);
                     } else {
                         sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));
                         return true;

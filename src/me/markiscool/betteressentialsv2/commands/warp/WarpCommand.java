@@ -23,10 +23,10 @@ public class WarpCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(sender instanceof Player) {
-            Player player = (Player) sender;
+            final Player player = (Player) sender;
             if(player.hasPermission(Perm.WARP)) {
                 if(args.length == 1) {
-                    Warp warp = wm.getWarp(args[0].toLowerCase());
+                    final Warp warp = wm.getWarp(args[0].toLowerCase());
                     if(warp != null) {
                         player.teleport(warp.getLocation());
                         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_PEARL_THROW, 1f, 1f);

@@ -28,10 +28,11 @@ public class SetWarpCommand implements CommandExecutor {
             if(player.hasPermission(Perm.WARP_SET)) {
                 if (args.length == 1) {
                     final Location location = player.getLocation();
-                    final Warp warp = new Warp(args[0].toLowerCase(), location);
+                    final Warp warp = new Warp(args[0], location);
                     wm.add(warp);
+                    player.sendMessage(Util.wrapMessage("&6Set warp &a" + warp.getName()));
                 } else {
-                    sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
+                    player.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
                 }
             } else {
                 sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));

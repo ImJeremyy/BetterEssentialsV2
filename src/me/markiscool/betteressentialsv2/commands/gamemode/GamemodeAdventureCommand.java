@@ -34,7 +34,7 @@ public class GamemodeAdventureCommand implements CommandExecutor {
                 }
                 if (targetPlayer != null) {
                     targetPlayer.setGameMode(GameMode.ADVENTURE);
-                    sender.sendMessage(Util.wrapMessage(Lang.GAMEMODE_UPDATED));
+                    sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's " + Lang.GAMEMODE_UPDATED + " &aAdventure"));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }
