@@ -5,12 +5,8 @@ public class Lang {
     public static String PREFIX;
     public static String GAMEMODE_UPDATED;
     public static String INVENTORY_CLEARED;
-    public static String FLIGHT_ENABLED;
-    public static String FLIGHT_DISABLED;
-    public static String WARP_DELETE_SUCCESSFUL;
     public static String HEAL_SUCCESSFUL;
     public static String FEED_SUCCESSFUL;
-    public static String SPEED_UPDATED;
     public static String SPAWN_SET;
 
     public static String NOT_A_PLAYER;
@@ -27,12 +23,8 @@ public class Lang {
         PREFIX = "&6[&bBetterEssentials&aV2&6]&r";
         GAMEMODE_UPDATED = "&6gamemode has been updated to";
         INVENTORY_CLEARED = "&6Inventory cleared.";
-        FLIGHT_ENABLED = "&6Flight enabled.";
-        FLIGHT_DISABLED = "&6Flight disabled";
-        WARP_DELETE_SUCCESSFUL = "&6Successfully deleted warp.";
         HEAL_SUCCESSFUL = "&6Heal successfu.l";
         FEED_SUCCESSFUL = "&6Feed successful.";
-        SPEED_UPDATED = "&6Speed updated.";
         SPAWN_SET = "&aSpawn set.";
 
         NOT_A_PLAYER = "&cYou are not a player";

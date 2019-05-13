@@ -78,7 +78,13 @@ public class Perm {
         SPAWN = new Permission(prefix + "spawn");
 
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
-        //TODO ADD APRENTS
+        FLY_SELF.addParent(FLY_OTHERS, true);
+        SPEED_SELF.addParent(SPEED_OTHERS, true);
+        HEAL_SELF.addParent(HEAL_OTHERS, true);
+        FEED_SELF.addParent(FEED_OTHERS, true);
+        VANISH_SELF.addParent(VANISH_OTHERS, true);
+        GAMEMODE_SELF.addParent(GAMEMODE_OTHERS, true);
+        GIVE_SELF.addParent(GIVE_OTHERS, true);
     }
 
 }

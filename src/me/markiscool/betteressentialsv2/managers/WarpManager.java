@@ -1,7 +1,7 @@
 package me.markiscool.betteressentialsv2.managers;
 
 import me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin;
-import me.markiscool.betteressentialsv2.objects.Warp;
+import me.markiscool.betteressentialsv2.Warp;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

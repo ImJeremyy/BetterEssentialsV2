@@ -45,7 +45,7 @@ public class SpeedCommand implements CommandExecutor {
                 if(targetPlayer != null) {
                     targetPlayer.setWalkSpeed(speed);
                     targetPlayer.setFlySpeed(speed);
-                    sender.sendMessage(Util.wrapMessage(Lang.SPEED_UPDATED));
+                    sender.sendMessage(Util.wrapMessage("&6Walk & Fly speeds have been set to &a" + speed + "&6."));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }

@@ -10,12 +10,11 @@ import me.markiscool.betteressentialsv2.commands.warp.WarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.WarpsCommand;
 import me.markiscool.betteressentialsv2.listeners.SeenListeners;
 import me.markiscool.betteressentialsv2.listeners.VanishListeners;
-import me.markiscool.betteressentialsv2.managers.SeenManager;
-import me.markiscool.betteressentialsv2.managers.SpawnManager;
-import me.markiscool.betteressentialsv2.managers.VanishManager;
-import me.markiscool.betteressentialsv2.managers.WarpManager;
+import me.markiscool.betteressentialsv2.managers.*;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -28,6 +27,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
     private VanishManager vanishManager;
     private SeenManager seenManager;
     private SpawnManager spawnManager;
+    private BEEconomy beEconomy;
 
     @Override
     public void onEnable() {
@@ -61,6 +61,10 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         return spawnManager;
     }
 
+    public BEEconomy getBeEconomy() {
+        return beEconomy;
+    }
+
     private void registerDataFolder() {
         if(getDataFolder().exists()) {
             getDataFolder().mkdir();
@@ -75,12 +79,15 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         warpManager = new WarpManager(this);
         vanishManager = new VanishManager(this);
         seenManager = new SeenManager(this);
-
+        spawnManager = new SpawnManager(this);
+        beEconomy = new BEEconomy(this);
+        getServer().getServicesManager().register(Economy.class, beEconomy, this, ServicePriority.Normal);
         BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
                 warpManager.push();
                 seenManager.push();
+                spawnManager.push();
             }
         };
         getServer().getScheduler().runTaskTimer(this, (Runnable) runnable, 60,  300);

@@ -3,7 +3,7 @@ package me.markiscool.betteressentialsv2.commands.warp;
 import me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin;
 import me.markiscool.betteressentialsv2.Util;
 import me.markiscool.betteressentialsv2.constants.Lang;
-import me.markiscool.betteressentialsv2.objects.Warp;
+import me.markiscool.betteressentialsv2.Warp;
 import me.markiscool.betteressentialsv2.constants.Perm;
 import me.markiscool.betteressentialsv2.managers.WarpManager;
 import org.bukkit.command.Command;

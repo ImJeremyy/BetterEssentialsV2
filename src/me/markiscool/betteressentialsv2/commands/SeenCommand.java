@@ -11,7 +11,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class SeenCommand implements CommandExecutor {

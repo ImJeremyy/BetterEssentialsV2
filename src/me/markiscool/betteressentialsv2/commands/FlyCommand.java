@@ -3,7 +3,6 @@ package me.markiscool.betteressentialsv2.commands;
 import me.markiscool.betteressentialsv2.Util;
 import me.markiscool.betteressentialsv2.constants.Lang;
 import me.markiscool.betteressentialsv2.constants.Perm;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +25,7 @@ public class FlyCommand implements CommandExecutor {
                     }
                 } else { //other
                     if (sender.hasPermission(Perm.FLY_OTHERS)) {
-                        targetPlayer = Bukkit.getPlayer(args[0]);
+                        targetPlayer = Util.getPlayer(args[0]);
                     } else {
                         sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));
                         return true;
@@ -38,12 +37,12 @@ public class FlyCommand implements CommandExecutor {
                         //turn off
                         targetPlayer.setAllowFlight(false);
                         targetPlayer.setFlying(false);
-                        sender.sendMessage(Util.wrapMessage(Lang.FLIGHT_DISABLED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + " &6's flight was disabled."));
                     } else {
                         //turn on
                         targetPlayer.setAllowFlight(true);
                         targetPlayer.setFlying(true);
-                        sender.sendMessage(Util.wrapMessage(Lang.FLIGHT_ENABLED));
+                        sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + " &6's flight was enabled."));
                     }
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));

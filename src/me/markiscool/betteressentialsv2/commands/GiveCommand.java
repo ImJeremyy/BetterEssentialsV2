@@ -59,6 +59,7 @@ public class GiveCommand implements CommandExecutor {
                 } else {
                     targetPlayer.getLocation().getWorld().dropItemNaturally(targetPlayer.getLocation(), item);
                 }
+                sender.sendMessage(Util.wrapMessage("&6Successfully gave &a" + targetPlayer.getName() + " " + amount + " " + material.name()));
             } else {
                 sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
             }

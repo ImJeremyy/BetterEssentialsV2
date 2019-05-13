@@ -71,3 +71,15 @@ commands:
   setspawn:
     description: Sets your location as spawn
     usage: /<command>
+  balance:
+    description: Check your, or another player's, balance.
+    usage: /<command> [player]
+    aliases: [bal]
+  balancetop:
+    description: Check who has the most balance on the server.
+    usage: /<command>
+    aliases: [baltop]
+  economy:
+    description: Base economy command.
+    usage: /<command> <set/reset/add/remove> <player> <amount>
+    aliases: [eco]

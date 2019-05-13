@@ -1,4 +1,4 @@
-package me.markiscool.betteressentialsv2.objects;
+package me.markiscool.betteressentialsv2;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
