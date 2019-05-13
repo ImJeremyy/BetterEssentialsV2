@@ -39,6 +39,12 @@ public class Perm {
 
     public static Permission SEEN;
 
+    public static Permission BALANCE_SELF;
+    public static Permission BALANCE_OTHERS;
+
+    public static Permission BALANCE_TOP;
+    public static Permission ECONOMY;
+
     private final static String prefix = "betteressentialsv2.";
 
     static {
@@ -77,6 +83,11 @@ public class Perm {
         SET_SPAWN = new Permission(prefix + "spawn.set");
         SPAWN = new Permission(prefix + "spawn");
 
+        BALANCE_SELF = new Permission(prefix + "balance");
+        BALANCE_OTHERS = new Permission(prefix + "balance.others");
+
+        BALANCE_TOP = new Permission(prefix + "balance.top");
+
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
         FLY_SELF.addParent(FLY_OTHERS, true);
         SPEED_SELF.addParent(SPEED_OTHERS, true);
@@ -85,6 +96,7 @@ public class Perm {
         VANISH_SELF.addParent(VANISH_OTHERS, true);
         GAMEMODE_SELF.addParent(GAMEMODE_OTHERS, true);
         GIVE_SELF.addParent(GIVE_OTHERS, true);
+        BALANCE_SELF.addParent(BALANCE_OTHERS, true);
     }
 
 }

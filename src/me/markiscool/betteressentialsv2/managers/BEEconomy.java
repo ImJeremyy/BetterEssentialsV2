@@ -5,9 +5,7 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.OfflinePlayer;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BEEconomy implements Economy {
 
@@ -22,6 +20,21 @@ public class BEEconomy implements Economy {
             if(p.getName().equalsIgnoreCase(name)) return p;
         }
         return null;
+    }
+
+    /**
+     * Jeremy - 100.0
+     * Maya - 52.5
+     * Chris - 91.3
+     * Matthew - 91.3
+     */
+    public Map.Entry<OfflinePlayer, Double> getBalanceTop(final int topCount) {
+        final Map<OfflinePlayer, Double> baltop = new LinkedHashMap<>();
+        double[] highestNums = new double[topCount];
+        for(int i = 0; i < players.size(); i++) {
+            double highest = 0;
+            for()
+        }
     }
 
     @Override
