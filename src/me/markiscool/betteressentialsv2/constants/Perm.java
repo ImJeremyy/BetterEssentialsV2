@@ -88,6 +88,8 @@ public class Perm {
 
         BALANCE_TOP = new Permission(prefix + "balance.top");
 
+        ECONOMY = new Permission(prefix + "economy");
+
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
         FLY_SELF.addParent(FLY_OTHERS, true);
         SPEED_SELF.addParent(SPEED_OTHERS, true);

@@ -35,19 +35,22 @@ public class SpawnManager {
     }
 
     public void push() {
-        final String world = spawn.getWorld().getName();
-        final double x = spawn.getX();
-        final double y = spawn.getY();
-        final double z = spawn.getZ();
-        final float yaw = spawn.getYaw();
-        final float pitch = spawn.getPitch();
-        final ConfigurationSection sec = config.getConfigurationSection("spawn");
-        sec.set("world", world);
-        sec.set("x", x);
-        sec.set("y", y);
-        sec.set("z", z);
-        sec.set("yaw", yaw);
-        sec.set("pitch", pitch);
+        if(spawn != null) {
+            final String world = spawn.getWorld().getName();
+            final double x = spawn.getX();
+            final double y = spawn.getY();
+            final double z = spawn.getZ();
+            final float yaw = spawn.getYaw();
+            final float pitch = spawn.getPitch();
+            final ConfigurationSection sec = config.getConfigurationSection("spawn");
+            sec.set("world", world);
+            sec.set("x", x);
+            sec.set("y", y);
+            sec.set("z", z);
+            sec.set("yaw", yaw);
+            sec.set("pitch", pitch);
+            save();
+        }
     }
 
     public void pull() {

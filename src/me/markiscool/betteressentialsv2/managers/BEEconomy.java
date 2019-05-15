@@ -3,37 +3,44 @@ package me.markiscool.betteressentialsv2.managers;
 import me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class BEEconomy implements Economy {
 
+    private BetterEssentialsV2Plugin plugin;
+
+    private File file;
+    private FileConfiguration config;
+
     private Map<OfflinePlayer, Double> players;
 
     public BEEconomy(final BetterEssentialsV2Plugin plugin) {
+        this.plugin = plugin;
+        createFile();
         players = new HashMap<>();
+        pull();
     }
 
-    public OfflinePlayer getOfflinePlayer(String name) {
+    public OfflinePlayer getOfflinePlayer(final String name) {
         for(OfflinePlayer p : players.keySet()) {
             if(p.getName().equalsIgnoreCase(name)) return p;
         }
         return null;
     }
 
-    /**
-     * Jeremy - 100.0
-     * Maya - 52.5
-     * Chris - 91.3
-     * Matthew - 91.3
-     */
-    public Map.Entry<OfflinePlayer, Double> getBalanceTop(final int topCount) {
-        final Map<OfflinePlayer, Double> baltop = new LinkedHashMap<>();
-        double[] highestNums = new double[topCount];
-        for(int i = 0; i < players.size(); i++) {
-            double highest = 0;
-            for()
+    public void setBalance(final OfflinePlayer targetPlayer, final double amount) {
+        final double amountToChange = getBalance(targetPlayer) - amount; //eg: set: 500. Balance = 1200. Amount to change = 1200 - 500
+        if(amountToChange < 0) { //balance = 500, set to 2000. 500 - 2000 = -1500. add 1500
+            depositPlayer(targetPlayer, Math.abs(amountToChange));
+        } else { //balance = 2000, set to 500. Amount to change = 2000 - 500 = 1500. Remove 1500
+            withdrawPlayer(targetPlayer, Math.abs(amountToChange));
         }
     }
 
@@ -180,7 +187,7 @@ public class BEEconomy implements Economy {
         double balance = players.get(player);
         if(player != null) {
             players.remove(player);
-            players.put(player, balance - amount);
+            players.put(player, balance + amount);
             return new EconomyResponse(amount, balance, EconomyResponse.ResponseType.SUCCESS, "Could not withdraw " + amount + " from " + player.getName());
         }
         return new EconomyResponse(amount, balance, EconomyResponse.ResponseType.FAILURE, "Could not withdraw " + amount + " from " + player.getName());
@@ -190,7 +197,7 @@ public class BEEconomy implements Economy {
     public EconomyResponse depositPlayer(OfflinePlayer offlinePlayer, double amount) {
         double balance = players.get(offlinePlayer);
         players.remove(offlinePlayer);
-        players.put(offlinePlayer, balance - amount);
+        players.put(offlinePlayer, balance + amount);
         return new EconomyResponse(amount, balance, EconomyResponse.ResponseType.SUCCESS, "Could not withdraw " + amount + " from " + offlinePlayer.getName());
     }
 
@@ -310,5 +317,49 @@ public class BEEconomy implements Economy {
     @Deprecated
     public boolean createPlayerAccount(OfflinePlayer offlinePlayer, String worldName) {
         return createPlayerAccount(offlinePlayer);
+    }
+
+    public void push() {
+        config.set("economy", null);
+        config.createSection("economy");
+        for(Map.Entry<OfflinePlayer, Double> entry : players.entrySet()) {
+            UUID uuid = entry.getKey().getUniqueId();
+            double balance = entry.getValue();
+            config.set("economy." + uuid.toString() + ".balance", balance);
+        }
+        save();
+    }
+
+    private void pull() {
+        players.clear();
+        for(String u : config.getConfigurationSection("economy").getKeys(false)) {
+            UUID uuid = UUID.fromString(u);
+            double balance = config.getDouble("economy." + u + ".balance");
+            players.put(Bukkit.getOfflinePlayer(uuid), balance);
+        }
+    }
+
+    private void createFile() {
+        file = new File(plugin.getDataFolder(), "economy.yml");
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                plugin.getLogger().warning("Could not create economy.yml");
+            }
+        }
+        config = YamlConfiguration.loadConfiguration(file);
+        if(!config.contains("economy")) {
+            config.createSection("economy");
+            save();
+        }
+    }
+
+    private void save() {
+        try {
+            config.save(file);
+        } catch (IOException ex) {
+            plugin.getLogger().warning("Could not save economy.yml");
+        }
     }
 }

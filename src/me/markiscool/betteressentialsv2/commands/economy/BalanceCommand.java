@@ -2,6 +2,7 @@ package me.markiscool.betteressentialsv2.commands.economy;
 
 import me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin;
 import me.markiscool.betteressentialsv2.Util;
+import me.markiscool.betteressentialsv2.constants.Lang;
 import me.markiscool.betteressentialsv2.constants.Perm;
 import me.markiscool.betteressentialsv2.managers.BEEconomy;
 import org.bukkit.OfflinePlayer;
@@ -28,32 +29,32 @@ public class BalanceCommand implements CommandExecutor {
                     if (sender instanceof Player) {
                         targetPlayer = (Player) sender;
                     } else {
-                        //TODO NOT A PLAYER
+                        sender.sendMessage(Util.wrapMessage(Lang.NOT_A_PLAYER));
                         return true;
                     }
-                } else if (args.length == 1) {
+                } else { //other
                     if (sender.hasPermission(Perm.BALANCE_OTHERS)) {
-                        Player potentialOnlinePlayer = Util.getPlayer(args[0]);
+                        final Player potentialOnlinePlayer = Util.getPlayer(args[0]);
                         if(potentialOnlinePlayer != null) {
                             targetPlayer = potentialOnlinePlayer;
                         } else {
                             targetPlayer = eco.getOfflinePlayer(args[0]);
                         }
                     } else {
-                        //TODO NO PERMISSION
+                        sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));
                         return true;
                     }
                 }
                 if(targetPlayer != null) {
                     sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's balance: &a" + eco.getBalance(targetPlayer)));
                 } else {
-                    //TODO PLAYER NOT FOUND
+                    sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }
             } else {
-                //TODO Invalid args
+                sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
             }
         } else {
-            //TODO NO PERMISSION
+            sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));
         }
         return true;
     }

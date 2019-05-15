@@ -1,6 +1,9 @@
 package me.markiscool.betteressentialsv2;
 
 import me.markiscool.betteressentialsv2.commands.*;
+import me.markiscool.betteressentialsv2.commands.economy.BalanceCommand;
+import me.markiscool.betteressentialsv2.commands.economy.BalanceTopCommand;
+import me.markiscool.betteressentialsv2.commands.economy.EconomyCommand;
 import me.markiscool.betteressentialsv2.commands.gamemode.*;
 import me.markiscool.betteressentialsv2.commands.spawn.SetSpawnCommand;
 import me.markiscool.betteressentialsv2.commands.spawn.SpawnCommand;
@@ -8,6 +11,7 @@ import me.markiscool.betteressentialsv2.commands.warp.DeleteWarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.SetWarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.WarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.WarpsCommand;
+import me.markiscool.betteressentialsv2.listeners.EconomyListeners;
 import me.markiscool.betteressentialsv2.listeners.SeenListeners;
 import me.markiscool.betteressentialsv2.listeners.VanishListeners;
 import me.markiscool.betteressentialsv2.managers.*;
@@ -82,15 +86,16 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         spawnManager = new SpawnManager(this);
         beEconomy = new BEEconomy(this);
         getServer().getServicesManager().register(Economy.class, beEconomy, this, ServicePriority.Normal);
-        BukkitRunnable runnable = new BukkitRunnable() {
+        final BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
                 warpManager.push();
                 seenManager.push();
                 spawnManager.push();
+                beEconomy.push();
             }
         };
-        getServer().getScheduler().runTaskTimer(this, (Runnable) runnable, 60,  300);
+        getServer().getScheduler().runTaskTimer(this, (Runnable) runnable, 60,  40);
 
     }
 
@@ -115,6 +120,9 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         commands.put("seen", new SeenCommand(this));
         commands.put("spawn", new SpawnCommand(this));
         commands.put("setspawn", new SetSpawnCommand(this));
+        commands.put("balance", new BalanceCommand(this));
+        commands.put("balancetop", new BalanceTopCommand(this));
+        commands.put("economy", new EconomyCommand(this));
 
         for(final Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
             getCommand(entry.getKey()).setExecutor(entry.getValue());
@@ -125,6 +133,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         Listener[] listeners = {
                 new VanishListeners(this),
                 new SeenListeners(this),
+                new EconomyListeners(this),
                 };
 
         for(Listener l : listeners) {
