@@ -1,6 +1,9 @@
 package me.markiscool.betteressentialsv2;
 
 import me.markiscool.betteressentialsv2.commands.*;
+import me.markiscool.betteressentialsv2.commands.banning.BanCommand;
+import me.markiscool.betteressentialsv2.commands.banning.TempBanCommand;
+import me.markiscool.betteressentialsv2.commands.banning.UnbanCommand;
 import me.markiscool.betteressentialsv2.commands.economy.BalanceCommand;
 import me.markiscool.betteressentialsv2.commands.economy.BalanceTopCommand;
 import me.markiscool.betteressentialsv2.commands.economy.EconomyCommand;
@@ -132,6 +135,9 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         commands.put("balancetop", new BalanceTopCommand(this));
         commands.put("economy", new EconomyCommand(this));;
         commands.put("kill", new KillCommand());
+        commands.put("ban", new BanCommand(this));
+        commands.put("unban", new UnbanCommand(this));
+        commands.put("tempban", new TempBanCommand(this));
 
         for(final Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
             getCommand(entry.getKey()).setExecutor(entry.getValue());
@@ -143,6 +149,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
                 new VanishListeners(this),
                 new SeenListeners(this),
                 new EconomyListeners(this),
+                new BanListeners(this),
                 };
 
         for(Listener l : listeners) {

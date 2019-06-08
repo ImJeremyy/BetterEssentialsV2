@@ -13,35 +13,44 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class BanCommand implements CommandExecutor {
+import java.util.concurrent.TimeUnit;
 
-    private UsersAPI uapi;
+public class TempBanCommand implements CommandExecutor {
+
     private BanManager bm;
+    private UsersAPI uapi;
 
-    public BanCommand(final BetterEssentialsV2Plugin plugin) {
-        uapi = UsersAPIPlugin.getInstance();
+    public TempBanCommand(final BetterEssentialsV2Plugin plugin) {
         bm = plugin.getBanManager();
+        uapi = UsersAPIPlugin.getInstance();
     }
 
-    // /ban <player> [reason]
+    // /tempban <player> <duration_seconds> [reason]
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender.hasPermission(Perm.BAN)) {
-            if(args.length >= 1) {
+        if(sender.hasPermission(Perm.TEMP_BAN)) {
+            if(args.length >= 2) {
                 final OfflinePlayer targetPlayer = uapi.getOfflinePlayer(args[0]);
                 if(targetPlayer != null) {
+                    long duration;
+                    try {
+                        duration = Long.parseLong(args[1]);
+                    } catch (NumberFormatException ex) {
+                        sender.sendMessage(Util.wrapMessage("&cInvalid amount of seconds."));
+                        return true;
+                    }
                     String reason = "certain reasons...";
-                    if(args.length > 1) {
+                    if(args.length > 2) {
                         reason = "";
-                        for(int i = 1; i < args.length; i++) {
-                            reason+= args[i] + " ";
+                        for(int i = 2; i < args.length; i++) {
+                            reason += args[i] + " ";
                         }
                     }
+                    bm.tempban(targetPlayer.getUniqueId(), reason, TimeUnit.SECONDS.toMillis(duration));
                     if(targetPlayer.isOnline()) {
-                        final Player online = (Player) targetPlayer;
-                        online.kickPlayer(Util.colourize("&cYou were banned for &6" + reason + "&c."));
+                        Player online = (Player) targetPlayer;
+                        online.kickPlayer(Util.colourize("&cYou were tempbanned for &6" + reason + "&c. Time left: &6" + TimeUnit.MILLISECONDS.toSeconds(bm.getTempbanTimeLeft(targetPlayer.getUniqueId())) + " &cseconds."));
                     }
-                    bm.ban(targetPlayer.getUniqueId(), reason);
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }
@@ -53,4 +62,5 @@ public class BanCommand implements CommandExecutor {
         }
         return true;
     }
+
 }

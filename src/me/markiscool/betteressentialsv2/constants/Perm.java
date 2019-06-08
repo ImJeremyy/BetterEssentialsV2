@@ -48,6 +48,11 @@ public class Perm {
     public static Permission KILL_SELF;
     public static Permission KILL_OTHERS;
 
+    public static Permission UNBAN;
+    public static Permission BAN;
+    public static Permission KICK;
+    public static Permission TEMP_BAN;
+
     private final static String prefix = "betteressentialsv2.";
 
     static {
@@ -93,6 +98,14 @@ public class Perm {
 
         ECONOMY = new Permission(prefix + "economy");
 
+        KILL_SELF = new Permission(prefix + "kill");
+        KILL_OTHERS = new Permission(prefix + "kill.others");
+
+        BAN = new Permission(prefix + "ban");
+        UNBAN = new Permission(prefix + "unban");
+        KICK = new Permission(prefix + "kick");
+        TEMP_BAN = new Permission(prefix + "tempban");
+
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
         FLY_SELF.addParent(FLY_OTHERS, true);
         SPEED_SELF.addParent(SPEED_OTHERS, true);
@@ -102,6 +115,7 @@ public class Perm {
         GAMEMODE_SELF.addParent(GAMEMODE_OTHERS, true);
         GIVE_SELF.addParent(GIVE_OTHERS, true);
         BALANCE_SELF.addParent(BALANCE_OTHERS, true);
+        KILL_SELF.addParent(KILL_OTHERS, true);
     }
 
 }

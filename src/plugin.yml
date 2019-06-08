@@ -3,6 +3,7 @@ version: 1.0
 main: me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin
 api-version: 1.13
 author: MarkIsCool
+depend: [UsersAPI]
 description: Better version of essentials (low key)
 commands:
   clearinventory:
@@ -86,3 +87,15 @@ commands:
   kill:
     description: Kill command
     usage: /<command> [player]
+  ban:
+    description: Ban command.
+    usage: /<command> <reason> [reason]
+  unban:
+    description: Unban a banned player
+    usage: /<command> <player>
+  kick:
+    description: Kick a player
+    usage: /<command> <player>
+  tempban:
+    description: Temporarily ban a player
+    usage: /<command> <player> <duration_seconds>
