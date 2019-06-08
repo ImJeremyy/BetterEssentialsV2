@@ -45,6 +45,9 @@ public class Perm {
     public static Permission BALANCE_TOP;
     public static Permission ECONOMY;
 
+    public static Permission KILL_SELF;
+    public static Permission KILL_OTHERS;
+
     private final static String prefix = "betteressentialsv2.";
 
     static {

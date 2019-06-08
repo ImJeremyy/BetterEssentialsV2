@@ -83,3 +83,6 @@ commands:
     description: Base economy command.
     usage: /<command> <set/reset/add/remove> <player> <amount>
     aliases: [eco]
+  kill:
+    description: Kill command
+    usage: /<command> [player]

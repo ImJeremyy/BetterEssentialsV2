@@ -33,7 +33,7 @@ public class EconomyCommand implements CommandExecutor {
                     if (args.length == 2) {
                         if (arg1.equals("reset")) {
                             eco.setBalance(targetPlayer, 0);
-                            sender.sendMessage(Util.colourize("&a" + targetPlayer.getName() + "&6's balance was reset to &a0.0"));
+                            sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's balance was reset to &a0.0"));
                         } else {
                             sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
                         }
@@ -47,13 +47,13 @@ public class EconomyCommand implements CommandExecutor {
                         }
                         if (arg1.equals("set")) {
                             eco.setBalance(targetPlayer, amount);
-                            sender.sendMessage(Util.colourize("&a" + targetPlayer.getName() + "&6's balance was set to &a" + amount));
+                            sender.sendMessage(Util.wrapMessage("&a" + targetPlayer.getName() + "&6's balance was set to &a" + amount));
                         } else if (arg1.equals("add")) {
                             eco.depositPlayer(targetPlayer, amount);
-                            sender.sendMessage(Util.colourize("&6Deposited &a" + amount + " &6from &a" + targetPlayer.getName() + "&6's balance"));
+                            sender.sendMessage(Util.wrapMessage("&6Deposited &a" + amount + " &6from &a" + targetPlayer.getName() + "&6's balance"));
                         } else if (arg1.equals("remove")) {
                             eco.withdrawPlayer(targetPlayer, amount);
-                            sender.sendMessage(Util.colourize("&6Withdrew &a" + amount + " &6from &a" + targetPlayer.getName() + "&6's balance"));
+                            sender.sendMessage(Util.wrapMessage("&6Withdrew &a" + amount + " &6from &a" + targetPlayer.getName() + "&6's balance"));
                         } else {
                             sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
                         }
@@ -65,7 +65,7 @@ public class EconomyCommand implements CommandExecutor {
                 sender.sendMessage(Util.wrapMessage(Lang.INVALID_ARGUMENTS));
             }
         } else {
-            //TODO NO PERMISSION
+            sender.sendMessage(Util.wrapMessage(Lang.NO_PERMISSION));
         }
         return true;
     }

@@ -32,6 +32,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
     private SeenManager seenManager;
     private SpawnManager spawnManager;
     private BEEconomy beEconomy;
+    private BanManager banManager;
 
     @Override
     public void onEnable() {
@@ -47,6 +48,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         warpManager.push();
         seenManager.push();
         spawnManager.push();
+        banManager.push();
     }
 
     public WarpManager getWarpManager() {
@@ -69,6 +71,10 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         return beEconomy;
     }
 
+    public BanManager getBanManager() {
+        return banManager;
+    }
+
     private void registerDataFolder() {
         if(getDataFolder().exists()) {
             getDataFolder().mkdir();
@@ -85,6 +91,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         seenManager = new SeenManager(this);
         spawnManager = new SpawnManager(this);
         beEconomy = new BEEconomy(this);
+        banManager = new BanManager(this);
         getServer().getServicesManager().register(Economy.class, beEconomy, this, ServicePriority.Normal);
         final BukkitRunnable runnable = new BukkitRunnable() {
             @Override
@@ -93,6 +100,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
                 seenManager.push();
                 spawnManager.push();
                 beEconomy.push();
+                banManager.push();
             }
         };
         getServer().getScheduler().runTaskTimer(this, (Runnable) runnable, 60,  40);
@@ -122,7 +130,8 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         commands.put("setspawn", new SetSpawnCommand(this));
         commands.put("balance", new BalanceCommand(this));
         commands.put("balancetop", new BalanceTopCommand(this));
-        commands.put("economy", new EconomyCommand(this));
+        commands.put("economy", new EconomyCommand(this));;
+        commands.put("kill", new KillCommand());
 
         for(final Map.Entry<String, CommandExecutor> entry : commands.entrySet()) {
             getCommand(entry.getKey()).setExecutor(entry.getValue());
