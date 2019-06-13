@@ -95,7 +95,7 @@ commands:
     usage: /<command> <player>
   kick:
     description: Kick a player
-    usage: /<command> <player>
+    usage: /<command> <player> [reason]
   tempban:
     description: Temporarily ban a player
-    usage: /<command> <player> <duration_seconds>
+    usage: /<command> <player> <duration_seconds> [reason]

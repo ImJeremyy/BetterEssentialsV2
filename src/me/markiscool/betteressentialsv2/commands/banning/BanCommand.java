@@ -42,6 +42,7 @@ public class BanCommand implements CommandExecutor {
                         online.kickPlayer(Util.colourize("&cYou were banned for &6" + reason + "&c."));
                     }
                     bm.ban(targetPlayer.getUniqueId(), reason);
+                    sender.sendMessage(Util.colourize("&aYou banned &6" + targetPlayer.getName() + " &afor &6" + reason));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }

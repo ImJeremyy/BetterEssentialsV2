@@ -51,6 +51,7 @@ public class TempBanCommand implements CommandExecutor {
                         Player online = (Player) targetPlayer;
                         online.kickPlayer(Util.colourize("&cYou were tempbanned for &6" + reason + "&c. Time left: &6" + TimeUnit.MILLISECONDS.toSeconds(bm.getTempbanTimeLeft(targetPlayer.getUniqueId())) + " &cseconds."));
                     }
+                    sender.sendMessage(Util.colourize("&aYou temporarily banned &6" + targetPlayer.getName() + "&a seconds for &6" + duration + " &afor &6" + reason));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }

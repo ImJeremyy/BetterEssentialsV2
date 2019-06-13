@@ -53,6 +53,9 @@ public class Perm {
     public static Permission KICK;
     public static Permission TEMP_BAN;
 
+    public static Permission COLOR_CHAT;
+    public static Permission COLOR_SIGN;
+
     private final static String prefix = "betteressentialsv2.";
 
     static {
@@ -105,6 +108,9 @@ public class Perm {
         UNBAN = new Permission(prefix + "unban");
         KICK = new Permission(prefix + "kick");
         TEMP_BAN = new Permission(prefix + "tempban");
+
+        COLOR_CHAT = new Permission(prefix + "color.chat");
+        COLOR_SIGN = new Permission(prefix + "color.sign");
 
         CLEAR_INVENTORY.addParent(CLEAR_INVENTORY_OTHERS, true);
         FLY_SELF.addParent(FLY_OTHERS, true);

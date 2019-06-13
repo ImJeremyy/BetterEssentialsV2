@@ -3,7 +3,6 @@ package me.markiscool.betteressentialsv2.listeners;
 import me.markiscool.betteressentialsv2.BetterEssentialsV2Plugin;
 import me.markiscool.betteressentialsv2.Util;
 import me.markiscool.betteressentialsv2.managers.BanManager;
-import org.bukkit.BanList;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +15,7 @@ public class BanListeners implements Listener {
 
     private BanManager bm;
 
-    private BanListeners(final BetterEssentialsV2Plugin plugin) {
+    public BanListeners(final BetterEssentialsV2Plugin plugin) {
         bm = plugin.getBanManager();
     }
 

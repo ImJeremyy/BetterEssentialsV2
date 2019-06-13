@@ -14,11 +14,11 @@ import me.markiscool.betteressentialsv2.commands.warp.DeleteWarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.SetWarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.WarpCommand;
 import me.markiscool.betteressentialsv2.commands.warp.WarpsCommand;
-import me.markiscool.betteressentialsv2.listeners.EconomyListeners;
-import me.markiscool.betteressentialsv2.listeners.SeenListeners;
-import me.markiscool.betteressentialsv2.listeners.VanishListeners;
+import me.markiscool.betteressentialsv2.listeners.*;
 import me.markiscool.betteressentialsv2.managers.*;
+import net.milkbowl.vault.Vault;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.ServicePriority;
@@ -95,7 +95,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
         spawnManager = new SpawnManager(this);
         beEconomy = new BEEconomy(this);
         banManager = new BanManager(this);
-        getServer().getServicesManager().register(Economy.class, beEconomy, this, ServicePriority.Normal);
+        getServer().getServicesManager().register(Economy.class, beEconomy, Bukkit.getPluginManager().getPlugin("Vault"), ServicePriority.Normal);
         final BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
@@ -150,6 +150,7 @@ public class BetterEssentialsV2Plugin extends JavaPlugin {
                 new SeenListeners(this),
                 new EconomyListeners(this),
                 new BanListeners(this),
+                new ChatColorListeners(this),
                 };
 
         for(Listener l : listeners) {

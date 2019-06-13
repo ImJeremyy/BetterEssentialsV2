@@ -33,6 +33,7 @@ public class UnbanCommand implements CommandExecutor {
                     final UUID uuid = targetPlayer.getUniqueId();
                     if (bm.contains(uuid)) {
                         bm.unban(uuid);
+                        sender.sendMessage(Util.colourize("&aYou unbanned &6" + targetPlayer.getName() + "&a."));
                     } else {
                         sender.sendMessage(Util.wrapMessage("&cThis player is not banned."));
                     }

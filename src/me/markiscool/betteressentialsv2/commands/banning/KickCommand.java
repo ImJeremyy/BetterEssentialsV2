@@ -30,6 +30,7 @@ public class KickCommand implements CommandExecutor {
                         reason = "&ccertain reasons..";
                     }
                     targetPlayer.kickPlayer(Util.colourize("&cYou were kicked for &6" + reason));
+                    sender.sendMessage(Util.colourize("&aYou kicked &6" + targetPlayer.getName() + "&a for &6" + reason));
                 } else {
                     sender.sendMessage(Util.wrapMessage(Lang.PLAYER_NOT_FOUND));
                 }
